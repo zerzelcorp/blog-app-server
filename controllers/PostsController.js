@@ -26,25 +26,30 @@ const getPost = async(req,res)=>{
 }
 
  createPost = async (req,res)=>{
-    //  const {author,title,description} = req.body;
-    try {
-    //  const task= Task.findOne({title,description})
-    //  if(task){
-    //     res.status(405).send({status:"error","message":`Task already exist`}) 
-    //  }else{
+
+   const {author,title,description} = req.body;
+
+    try {  
+        let post = Post.findOne({title})
+
+        if(post){
+            return res.status(400).send({status:"error",msj:"already a post with this title"})
+        }
+
          const newPost = new Post(req.body)
  
          await newPost.save()
  
          res.status(201).send({status:"ok",message:`post created${newPost}`}) 
-    //  }
     } catch (error) {
         res.status(409).send({status:"error","message":`${error}`})   
     }
 }
 
  updatePost = async(req,res)=>{
+     
     const {id} = req.params
+
     try {
         await Post.findByIdAndUpdate(id,req.body)
         res.status(200).send({status:"ok",message:`post with id:${id} has been updated`})        

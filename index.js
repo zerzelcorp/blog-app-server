@@ -3,9 +3,6 @@ const router = require('./routes/AppRoutes');
 const cors = require('cors')
 require('dotenv').config();
 require('./db');
-
-console.log(process.env)
-
 /*
 * VARIABLES
 */

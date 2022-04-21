@@ -1,12 +1,14 @@
 const jwt = require("jsonwebtoken");
 
 const generateJWT = (uid, name) => {
+  
   return new Promise((resolve, reject) => {
+
     const payload = { uid, name };
 
     jwt.sign(
       payload,
-      "ElCie-lo-esA@rillo22",
+      process.env.SEED,
       {
         expiresIn: "2h",
       },
@@ -15,7 +17,6 @@ const generateJWT = (uid, name) => {
           console.log(err);
           reject("Token error");
         }
-
         resolve(token);
       }
     );
