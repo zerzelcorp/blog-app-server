@@ -28,5 +28,5 @@ app.use('/',router);
 * STARTING THE SERVER
 */
 app.listen(PORT,()=>{
-    console.log(`Server Running on Url: http://localhost:${PORT}/`)
+    console.log(`🚀  Server Running on Url: http://localhost:${PORT}/`)
 })
