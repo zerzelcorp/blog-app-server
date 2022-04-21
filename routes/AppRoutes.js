@@ -2,24 +2,30 @@ const {Router}= require('express');
 
 const {getAllPosts,getPost,createPost,updatePost,deletePost} =require('../controllers/PostsController');
 
-const { updateProfile, deleteAccount, getUser, getAllUsers, authUser } = require('../controllers/UserController');
+const {  authUser, getAllUsers,getUser,updateProfile, deleteAccount } = require('../controllers/UserController');
 
 const router = Router();
 
+/** 
+** POST ROUTES
+*/
+router.get('/',getAllPosts)
 
-router.get('/home',getAllPosts)
+router.get('/:id',getPost)
 
-router.get('/post/:id',getPost)
-
-router.post('/home',createPost)
+router.post('/',createPost)
 
 router.put('/post/:id',updatePost)
 
 router.delete('/post/:id',deletePost)
-// USER ROUTES
+
+/** 
+**USER ROUTES
+*/
 router.get('/auth',authUser)
 router.get('/users',getAllUsers)
 router.get('/user-profile/:id',getUser)
+router.post('/auth',createUser)
 router.put('/account/:id',updateProfile)
 router.delete('/account/:id',deleteAccount)
 

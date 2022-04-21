@@ -4,7 +4,7 @@ const Post = require('../models/PostSchema')
 const getAllPosts = async(req,res)=>{
     try {
 
-    const posts=await Task.find({})  
+    const posts=await Post.find({})  
 
     res.status(200).send({res:posts})
 
