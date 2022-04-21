@@ -1,58 +1,59 @@
 
-const Task = require('../models/taskSchema')
+const Post = require('../models/PostSchema')
 
-const getAllTask = async(req,res)=>{
+const getAllPosts = async(req,res)=>{
     try {
-    const tasks=await Task.find({})  
 
-    res.status(200).send({res:tasks})
+    const posts=await Task.find({})  
+
+    res.status(200).send({res:posts})
 
     } catch (error) {
         res.status(404).send({message:`${error}`})
     }
 }
 
-const getTask = async(req,res)=>{
+const getPost = async(req,res)=>{
     const {id}= req.params
     try {
-        const task = await Task.findById(id)  
+        const post = await Post.findById(id)  
     
-        res.status(200).send({res:task})
+        res.status(200).send({res:post})
     
         } catch (error) {
             res.status(404).send({message:`${error}`})
         }
 }
 
- createTask = async (req,res)=>{
-     const {title,description} = req.body;
+ createPost = async (req,res)=>{
+    //  const {author,title,description} = req.body;
     try {
     //  const task= Task.findOne({title,description})
     //  if(task){
     //     res.status(405).send({status:"error","message":`Task already exist`}) 
     //  }else{
-         const newTask = new Task(req.body)
+         const newPost = new Post(req.body)
  
-         await newTask.save()
+         await newPost.save()
  
-         res.status(201).send({status:"ok",message:`task created${newTask}`}) 
+         res.status(201).send({status:"ok",message:`post created${newPost}`}) 
     //  }
     } catch (error) {
         res.status(409).send({status:"error","message":`${error}`})   
     }
 }
 
- updateTask = async(req,res)=>{
+ updatePost = async(req,res)=>{
     const {id} = req.params
     try {
-        await Task.findByIdAndUpdate(id,req.body)
-        res.status(200).send({status:"ok",message:`task with id:${id} has been updated`})        
+        await Post.findByIdAndUpdate(id,req.body)
+        res.status(200).send({status:"ok",message:`post with id:${id} has been updated`})        
     } catch (error) {
         res.status(404).send({status:"error",message:`${error}`})  
     }
 }
 
-const deleteTask = async(req,res)=>{
+const deletePost = async(req,res)=>{
     const {id}=req.params
 try {
     await Task.deleteOne({id})
@@ -63,9 +64,9 @@ try {
 }
 
 module.exports = {
-    getAllTask,
-    getTask,
-    createTask,
-    updateTask,
-    deleteTask
+    getAllPosts,
+    getPost,
+    createPost,
+    updatePost,
+    deletePost
 }

@@ -1,9 +1,10 @@
 const {Schema,model} = require('mongoose')
 
-const taskShema = new Schema({
+const PostShema = new Schema({
+    author:String,
     title:{type:String,required:true,unique:true},
     description:{type:String},
     date: { type: Date, default: Date.now },
 })
 
-module.exports = model("Task",taskShema);
+module.exports = model("Post",PostShema);
