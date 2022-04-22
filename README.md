@@ -1,7 +1,7 @@
 # blog-app-server
 Rest Api for a blog app built in Node with express and mongodb. I wanted to do it as complete as possible so it has authentication, psw encryptation and Json Web Token Validation.
 
-It has routes and controllers for the following actions CRUD:
+It has routes and controllers for the following actions:
 
 -Auth---login,register,
 
